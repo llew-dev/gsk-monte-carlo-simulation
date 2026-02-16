@@ -19,11 +19,11 @@ This project uses **Machine Learning** and **Geometric Brownian Motion** to fore
 * **Machine Learning Model:** A Random Forest Regressor model (200 trees, depth 5) that uses walk-forward validation to predict price changes.
 * **Visualisation:** It then plots the actual daily closing price of GSK against the ML predicted daily closing price. 
 
-![ML Price Prediciton](.gsk_images/ml_price_pred_graph.png)
+![ML Price Prediciton](./gsk_images/ml_price_pred_graph.png)
 
 ### 3. "gsk_monte_carlo.py"
 * **Method:** Geometric Brownian Motion.
 * **Parameters** 10,000 simulations over a 390-day (18-month) horizon.
 * **Result:** A probability distribution of 500 random paths, current price, and average price path.
 
-![Monte Carlo Simulation](.gsk_images/monte_carlo_sim_GSK.png)
+![Monte Carlo Simulation](./gsk_images/monte_carlo_sim_GSK.png)
