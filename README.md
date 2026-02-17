@@ -24,6 +24,6 @@ This project uses **Machine Learning** and **Geometric Brownian Motion** to fore
 ### 3. "gsk_monte_carlo.py"
 * **Method:** Geometric Brownian Motion.
 * **Parameters** 10,000 simulations over a 390-day (18-month) horizon.
-* **Result:** A probability distribution of 500 random paths, current price, and average price path.
+* **Result:** A probability distribution of 500 random paths, current price (as of Feb 2026), and average price path.
 
 ![Monte Carlo Simulation](./gsk_images/monte_carlo_sim_GSK.png)
