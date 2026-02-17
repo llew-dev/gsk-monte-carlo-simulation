@@ -16,7 +16,7 @@ This project uses **Machine Learning** and **Geometric Brownian Motion** to fore
 
 ### 2. "gsk_ml_model.py"
 * **Approach:** Reads "gsk_daily.csv" and uses its dataset in calculations for metrics like lagged returns, moving average/gap, and rolling volatility.
-* **Machine Learning Model:** A Random Forest Regressor model (200 trees, depth 5) that uses walk-forward validation to predict price changes.
+* **Machine Learning Model:** A Random Forest Regressor model (200 trees, depth 5) that uses walk-forward validation to predict price changes, whilst using FTSE 100 daily return as a comparative benchmark to simulate potential non-statistical (external) shocks to GSK.
 * **Visualisation:** It then plots the actual daily closing price of GSK against the ML predicted daily closing price. 
 
 ![ML Price Prediciton](./gsk_images/ml_price_pred_graph.png)
