@@ -16,13 +16,13 @@ gsk["ret_1"] = gsk["log_return"].shift(1)
 gsk["ret_5"] = gsk["log_return"].shift(5)
 gsk["ret_21"] = gsk["log_return"].shift(21)
 
-# rolling volatility in past 4 and 12 weeks
+# rolling volatility in past 5 and 21 days
 gsk["vol_5"] = gsk["log_return"].rolling(5).std()
 gsk["vol_21"] = gsk["log_return"].rolling(21).std()
 
 # moving avg is the avg prices over this timespan
-# moving avg gap is the price differential between current price and the weekly moving avg
-# pos moving avg gap shows the current price for that week has opened higher than the previous weeks close.
+# moving avg gap is the price differential between current price and the daily moving avg
+# pos moving avg gap shows the current price for that day has opened higher than the yesterday's close.
 # neg ma indicates a downwards trend, so the avg price is falling
 # pos ma indicates upwards trend, so avg price is increasing
 gsk["ma_21"] = gsk["Close"].rolling(21).mean()
@@ -54,9 +54,9 @@ dates = []
 # number of days of data to be used
 min_train_size = 252
 
-# starts at week 52 and runs until the end of gsk dataframe, i.e everything before i is the past data and i itself is the prediction
-# essentially trains from week 1 to week 52, analysing the changes in metrics outlined earlier, then predicts what happens on week 53,
-# then the timeframe for historical data increases by 1 week, so now the model has data from week 1 to week 53, and repeats the process
+# starts at day 252 and runs until the end of gsk dataframe, i.e everything before i is the past data and i itself is the prediction
+# essentially trains from day 1 to day 252, analysing the changes in metrics outlined earlier, then predicts what happens on day 253,
+# then the timeframe for historical data increases by 1 day, so now the model has data from day 1 to day 53, and repeats the process
 # until the end of the dataset.
 for i in range(min_train_size, len(gsk)):
     # slices the features from gsk dataset from the very beginning up to, but not including, i.
@@ -64,7 +64,7 @@ for i in range(min_train_size, len(gsk)):
     # slices the target column from gsk dataset for the same period
     y_train = y.iloc[:i]
 
-    # selects the row from features at index i, isolating the data for "week"/the week we want to predict
+    # selects the row from features at index i, isolating the data for "day"/the day we want to predict
     x_test = x.iloc[i:i+1]
     # selects the actual result at index i, setting aside the real value so it can be used to compare against
     y_test = y.iloc[i]
@@ -87,7 +87,7 @@ for i in range(min_train_size, len(gsk)):
 
     # calls training algorithm from earlier to study the past data to find patterns
     model.fit(x_train_scaled, y_train)
-    # uses what's learned from past data to predict the value next week
+    # uses what's learned from past data to predict the value next day
     pred = model.predict(x_test_scaled)[0]
 
     # adds the models prediction back into a list
