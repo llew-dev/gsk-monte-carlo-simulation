@@ -27,3 +27,5 @@ This project uses **Machine Learning** and **Geometric Brownian Motion** to fore
 * **Result:** A probability distribution of 500 random paths, current price (Feb 2026), and average price path.
 
 ![Monte Carlo Simulation](./gsk_images/monte_carlo_sim_GSK.png)
+
+To see developed analysis read each .py to find fully commented code.
