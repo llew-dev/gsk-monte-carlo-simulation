@@ -56,7 +56,7 @@ min_train_size = 252
 
 # starts at day 252 and runs until the end of gsk dataframe, i.e everything before i is the past data and i itself is the prediction
 # essentially trains from day 1 to day 252, analysing the changes in metrics outlined earlier, then predicts what happens on day 253,
-# then the timeframe for historical data increases by 1 day, so now the model has data from day 1 to day 53, and repeats the process
+# then the timeframe for historical data increases by 1 day, so now the model has data from day 1 to day 253, and repeats the process
 # until the end of the dataset.
 for i in range(min_train_size, len(gsk)):
     # slices the features from gsk dataset from the very beginning up to, but not including, i.
@@ -74,7 +74,7 @@ for i in range(min_train_size, len(gsk)):
     x_train_scaled = scaler.fit_transform(x_train)
     x_test_scaled = scaler.transform(x_test)
 
-    # creates a new random forest model with 200 trees with a max of 4 depth for this specific week
+    # creates a new random forest model with 200 trees with a max of 4 depth for this specific day
     model = RandomForestRegressor(
         # number of trees
         n_estimators=200,
