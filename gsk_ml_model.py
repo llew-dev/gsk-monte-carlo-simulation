@@ -6,7 +6,7 @@ import numpy as np
 # reads the data saved from the prep data file
 gsk = pd.read_csv("gsk_daily.csv", index_col=0, parse_dates=True)
 
-# converting .csv files into usable integers fpr calculations
+# converting .csv files into usable integers for calculations
 gsk["Close"] = pd.to_numeric(gsk["Close"], errors="coerce")
 gsk["log_return"] = pd.to_numeric(gsk["log_return"], errors="coerce")
 gsk["ftse_return"] = pd.to_numeric(gsk["ftse_return"], errors="coerce")
@@ -116,7 +116,7 @@ results["Actual_Close"] = gsk.loc[results.index, "Close"]
 # from 3 months ago
 results["Yesterday_Actual_Close"] = gsk["Close"].shift(1).loc[results.index]
 
-# takes yesterday's real closing price and add the predicted return for today
+# takes yesterday's real closing price and adds the predicted return for today
 # meaning as the model now refreshes in a sense every day, if it messes up, on the following
 # day it will start fresh and recover
 # Formula: Yesterday's Real Price * (1 + Predicted Return)
